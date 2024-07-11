@@ -34,7 +34,7 @@ function oldScrabbleScorer(word) {
 // don't change the names or your program won't work as expected. //
 
 function initialPrompt() {
-   wordToScore = input.question("Let's play some scrabble! Enter a word: ");
+   wordToScore = input.question("Let's play some scrabble!\n\nEnter a word: ");
 };
 
 
@@ -99,16 +99,20 @@ let scrabbleScorer = {
 const scoringAlgorithms = [simpleScorer, vowelBonusScorer, scrabbleScorer];
 
 function scorerPrompt() {
-   algorithm = input.question("Please select 0, 1, 2: ");
-   return scoringAlgorithms[algorithm].scorerFuncion(wordToScore);
+   algorithm = input.question(`Which scoring algorithm would you like to use?\n\n
+0 - ${scoringAlgorithms[0].name}: ${scoringAlgorithms[0].description}
+1 - ${scoringAlgorithms[1].name}: ${scoringAlgorithms[1].description}
+2 - ${scoringAlgorithms[2].name}: ${scoringAlgorithms[2].description}
+Enter 0, 1, or 2: `);
+   return console.log(`Score for '${wordToScore}': ${scoringAlgorithms[algorithm].scorerFuncion(wordToScore)}`);
 };
 
 function transform() {};
 
 function runProgram() {
    initialPrompt();
-   //scorerPrompt();
-   console.log("Your score is: ",scorerPrompt(algorithm));
+   scorerPrompt();
+   
 }
 
 // Don't write any code below this line //
